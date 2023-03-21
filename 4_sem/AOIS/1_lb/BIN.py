@@ -1,3 +1,7 @@
+import variable
+
+DOP_NUM_7 = 7
+
 
 def dec_to_bi(number):
     modul_number = abs(number)
@@ -7,7 +11,7 @@ def dec_to_bi(number):
         result = str(modul_number % 2) + result
         modul_number = modul_number // 2
 
-    result = result.rjust(7, '0')  # Заполняем пустые позиции нулями
+    result = result.rjust(variable.DOP_NUM_TO_8BIT, '0')  # Заполняем пустые позиции нулями
     return result
 
 
@@ -39,7 +43,8 @@ def plus(num_1, num_2):
     count = bool(False)
     for iterator in reversed(range(len(num_1))):
         if not count:
-            if (num_1[iterator] == '0' and num_2[iterator] == '1') or (num_1[iterator] == '1' and num_2[iterator] == '0'):
+            if (num_1[iterator] == '0' and num_2[iterator] == '1') or (
+                    num_1[iterator] == '1' and num_2[iterator] == '0'):
                 result += '1'
             elif (num_1[iterator] and num_2[iterator]) == '0':
                 result += '0'
@@ -47,7 +52,8 @@ def plus(num_1, num_2):
                 result += '0'
                 count = True
         elif count:
-            if (num_1[iterator] == '0' and num_2[iterator] == '1') or (num_1[iterator] == '1' and num_2[iterator] == '0'):
+            if (num_1[iterator] == '0' and num_2[iterator] == '1') or (
+                    num_1[iterator] == '1' and num_2[iterator] == '0'):
                 result += '0'
                 count = True
             elif (num_1[iterator] and num_2[iterator]) == '0':
@@ -66,9 +72,8 @@ def multiplication(a2, b2):
     for i in reversed(range(len(b2))):
 
         if b2[i] == '1':
-
-            end_noll = '0' * (7 - i)
-            b = a2[7-i:] + end_noll   # убираем н число нулей в начале и добавляем н нулей в конец
+            end_noll = '0' * (variable.DOP_NUM_TO_8BIT - i)
+            b = a2[DOP_NUM_7 - i:] + end_noll  # убираем н число нулей в начале и добавляем н нулей в конец
             # result = plus(dop_num, b)   # для функции plus
             intsum = int(dop_num, 2) + int(b, 2)
             result = bin(intsum)
@@ -99,7 +104,7 @@ def division(number_1, number_2):
                 number1 = bin(int(number1, 2) - int(number2, 2))
                 result += '1'
 
-            elif div_dec == 1: # если знаменатель равен срезу числителя
+            elif div_dec == 1:  # если знаменатель равен срезу числителя
                 number1 = '0'
                 result += '1'
             iterator += 1
@@ -110,7 +115,7 @@ def division(number_1, number_2):
 def bi_to_dec(result):
     dop_number_to_invert = '00000001'
     key = int(result, 2)
-    if key > 128:    # условие нужно для выбора правильного перевода кодировок
+    if key > variable.OUT_LIMIT_BIN_NUM:  # условие нужно для выбора правильного перевода кодировок
         inv_res = plus(invert(result), dop_number_to_invert)
         inv_res = int(inv_res, 2)
     else:
@@ -119,4 +124,3 @@ def bi_to_dec(result):
         return - inv_res
     else:
         return inv_res
-

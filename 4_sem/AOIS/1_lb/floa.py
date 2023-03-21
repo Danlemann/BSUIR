@@ -1,3 +1,8 @@
+import variable
+
+BIT_COUNT_8 = 8
+
+
 def summ_of_floating(number_1, number_2):  # сумма чисел с плавающей точкой
     number_1 = _to_fix(number_1)
     number_2 = _to_fix(number_2)
@@ -33,14 +38,13 @@ def _to_fix(number):
         return 0
     number_temp_1 = int(number)
     iterator = 0
-    mantissa_size = 23
     fraction_part = number - float(number_temp_1)
     number_temp2 = dec_to_bin_add(number_temp_1)
     if number_temp2.find("1") == -1:
         result = "0" + "."
     else:
         result = number_temp2[number_temp2.find("1"):] + "."
-    while iterator <= (mantissa_size - len(result)):
+    while iterator <= (variable.MANT_SIZE - len(result)):
         fraction_part *= 2
         if int(fraction_part) == 0:
             result += "0"
@@ -48,7 +52,7 @@ def _to_fix(number):
             fraction_part -= 1
             result += "1"
             if fraction_part == 0:
-                result = result.ljust(23, "0")
+                result = result.ljust(variable.MANT_SIZE, "0")
     return result
 
 
@@ -85,9 +89,9 @@ def from_decimal_to_float(number):
         exp_sign = -1
     sign_bit = "0"
     if number.find("1", 0, number.find(".")) == -1:
-        exp_bits = dec_to_bin_straight(127 + ((number.find("1") - number.find(".")) * exp_sign))[-8:]
+        exp_bits = dec_to_bin_straight(variable.EXP_NUM + ((number.find("1") - number.find(".")) * exp_sign))[-8:]
     else:
-        exp_bits = dec_to_bin_straight(127 + ((number.find(".") - number.find("1") - 1) * exp_sign))[-8:]
+        exp_bits = dec_to_bin_straight(variable.EXP_NUM + ((number.find(".") - number.find("1") - 1) * exp_sign))[-8:]
     number = number[:number.find(".")] + number[number.find(".") + 1:]
     mantissa = number[number.find("1") + 1:]
     result = sign_bit + " " + exp_bits + " " + mantissa
@@ -99,8 +103,8 @@ def dec_to_bin_straight(number):  # Прямой код
     binary = ""
     tick_of_actions, clone_of_num, tick_of_bits = 0, number, 0
     result = ""
-    if abs(number) < 100:
-        bit_size = 8
+    if abs(number) < variable.LIMIT_BIN_NUM:
+        bit_size = BIT_COUNT_8
     else:
         bit_size = 16
     if number < 0:
@@ -171,14 +175,13 @@ def comparing_length(number_1, number_2):  # Comparing length of binary codes
 
 
 def from_float_to_decimal(number_in_float):
-    spec_exp_number = 127
     number_in_float = number_in_float[:number_in_float.find(" ")] + \
                       number_in_float[(number_in_float.find(" ") + 1):number_in_float.rfind(" ")] + \
                       number_in_float[number_in_float.rfind(" ") + 1:]
     decimal_mantissa = 0.0
     for i in range(9, len(number_in_float)):
         decimal_mantissa += int(number_in_float[i]) * pow(2, -(i - 8))
-    exp = int(from_binary_to_decimal("0" + number_in_float[1:9])) - spec_exp_number
+    exp = int(from_binary_to_decimal("0" + number_in_float[1:9])) - variable.EXP_NUM
     if number_in_float[0] == "1":
         sign_before = "-"
     else:

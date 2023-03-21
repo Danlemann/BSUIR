@@ -1,13 +1,12 @@
-
 import BIN
 import floa
 
 while True:
 
     key1 = input('Enter data type:\n'
-                  '1) int\n'
-                  '2) float\n'
-                  '0) exit..\n')
+                 '1) int\n'
+                 '2) float\n'
+                 '0) exit..\n')
     if key1 == '1':
         while True:
             a10 = int(input('Press (0) to exit..\n\n'
@@ -48,7 +47,8 @@ while True:
                     print('(a+b) =', result)
                     print('(10)->(2) = ', BIN.bi_to_dec(result))
                 elif key == '2':
-                    result = BIN.plus(a2_encoding, BIN.transform(-b10, b2))  # тута передаем число б в отрицательном виде для имитации вычитания
+                    result = BIN.plus(a2_encoding, BIN.transform(-b10,
+                                                                 b2))  # тута передаем число б в отрицательном виде для имитации вычитания
                     print('(a-b) =', result)
                     print('(10)->(2) = ', BIN.bi_to_dec(result))
 
@@ -86,7 +86,3 @@ while True:
 
     elif key1 == '0':
         break
-
-
-
-
