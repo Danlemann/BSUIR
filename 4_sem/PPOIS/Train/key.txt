@@ -1,0 +1,1 @@
+ python main.py -w way -p products -s start
