@@ -1,0 +1,28 @@
+bicycle, a human-powered vehicle with two wheels
+trafficjam, a situation where vehicles are unable to move or move very slowly
+hybridcar, a vehicle that combines an internal combustion engine with an electric motor
+pedestrian, a person who is traveling on foot
+trafficsignal, a device that controls the flow of traffic at intersections
+highspeedtrain, a train that operates at very high speeds usually on dedicated tracks
+scooter, a small two-wheeled vehicle powered by an engine or electric motor
+airplane, a powered flying vehicle with fixed wings and a weight greater than that of the air it displaces
+ferry, a boat or ship used to transport people
+metro, an underground railway system in urban areas
+carpooling, the practice of sharing a car journey with others
+tram, a vehicle that runs on tracks and is used for public transportation in urban areas
+motorcycle, a two-wheeled vehicle with an engine
+skateboard, a small board with four wheels used for transportation or sport
+tollroad, a road where drivers must pay a fee to use it
+cruiseship, a large passenger ship used for leisure travel
+cablecar, a transportation system that uses cable traction to move vehicles along steep slopes or across rivers
+trafficrules, regulations and guidelines that govern the behavior of vehicles and pedestrians on the road
+bicyclelane, a designated lane on the road for bicycles to travel safely
+taxi, a car that can be hired to transport passengers to a specific destination
+carrental, the service of renting a car for a specific period of time
+subway, an underground electric railway system in cities
+ferryterminal, a facility where ferries arrive and depart serving as a transportation hub for water travel
+hyperloop, a proposed mode of passenger and freight transportation that uses reduced pressure tubes and magnetic levitation
+busstop, a designated location where buses pick up and drop off passengers
+trafficlight, a signaling device that controls the flow of traffic at intersections
+airport, a facility where aircraft take off land and are serviced
+carriage, a wheeled vehicle used for transportation typically pulled by horses
